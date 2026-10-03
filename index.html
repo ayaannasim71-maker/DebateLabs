@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="DebateLabs — Think. Speak. Connect.">
+<title>DebateLabs — Think. Speak. Connect.</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#102841;--blue:#4b83d7;--ice:#eaf5ff;--muted:#70869b;--line:#d8e7f5;--white:#fff;--shadow:0 20px 60px rgba(29,74,120,.11)}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--navy);background:linear-gradient(180deg,#fcfeff,#f3f8ff);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.container{width:min(1160px,calc(100% - 34px));margin:auto}
+.nav{position:sticky;top:0;z-index:20;background:rgba(252,254,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.navin{height:74px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:10px;align-items:center;font-weight:800;font-size:1.1rem}
+.logo{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:var(--ice);border:1px solid var(--line);color:var(--blue)}
+.links{display:flex;gap:22px;align-items:center}
+.links a{font-weight:700;font-size:.9rem;color:#62778b;transition:.2s}
+.links a:hover{color:var(--blue)}
+.links .join{color:#fff;background:var(--blue);padding:10px 15px;border-radius:12px;box-shadow:0 10px 25px rgba(74,130,214,.25)}
+.menu{display:none;border:1px solid var(--line);background:#fff;border-radius:11px;width:44px;height:44px;font-size:22px}
+.hero{padding:105px 0 90px;min-height:730px;background:radial-gradient(circle at 10% 10%,#dcefff,transparent 28%),radial-gradient(circle at 90% 40%,#e6f6ff,transparent 28%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
+.pill{display:inline-block;padding:8px 13px;border:1px solid #cfe1f4;background:#eef7ff;border-radius:999px;color:#597ea8;text-transform:uppercase;font-size:.72rem;font-weight:800;letter-spacing:.7px}
+.hero h1{font-size:clamp(3.2rem,7vw,6.7rem);letter-spacing:-4px;margin:22px 0;line-height:1}
+.hero h1 span{color:var(--blue)}
+.hero p{color:var(--muted);font-size:1.05rem;max-width:690px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:13px 19px;border-radius:14px;font-weight:800;transition:.22s}
+.primary{background:var(--blue);color:#fff;box-shadow:0 13px 30px rgba(74,130,214,.27)}
+.primary:hover{transform:translateY(-4px);box-shadow:0 20px 38px rgba(74,130,214,.34)}
+.primary:active{transform:scale(.98)}
+.secondary{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.glow{position:relative}
+.glow:before{content:"";position:absolute;inset:-7px;border-radius:18px;background:radial-gradient(circle,rgba(100,169,255,.35),transparent 68%);filter:blur(8px);z-index:-1;animation:pulse 2.5s infinite}
+.meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.meta span{padding:7px 10px;border:1px solid var(--line);background:#fff;border-radius:999px;color:#71869b;font-size:.75rem;font-weight:700}
+.hero-card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);animation:float 6s ease-in-out infinite}
+.top{display:flex;justify-content:space-between;color:#70869b;font-size:.75rem;font-weight:800}
+.live{color:#4b8a70;background:#eefbf5;border:1px solid #d7eee2;padding:6px 9px;border-radius:999px}
+.hero-card h3{font-size:1.5rem;margin:18px 0 8px}
+.hero-card p{color:var(--muted);font-size:.9rem}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.mini div{padding:12px;border:1px solid var(--line);background:#f8fcff;border-radius:14px;font-size:.84rem}
+.mini small{display:block;color:#7893af;text-transform:uppercase;font-size:.64rem;font-weight:800}
+.note{padding:12px 13px;border-radius:14px;background:var(--ice);color:#5d7690;font-size:.83rem}
+.section{padding:94px 0}
+.soft{background:linear-gradient(180deg,#edf7ff,#e7f2ff);border-block:1px solid #deecfa}
+.head{max-width:760px;margin-bottom:40px}
+.head h2{font-size:clamp(2.25rem,4.7vw,4rem);letter-spacing:-1.7px;margin:13px 0}
+.head p{color:var(--muted)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:23px;padding:25px;box-shadow:0 9px 28px rgba(28,76,129,.07);transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.ic{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:var(--ice);border:1px solid var(--line);font-size:1.35rem;margin-bottom:15px}
+.card h3{font-size:1.12rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.91rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{padding:23px;background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:20px}
+.num{font-size:1.8rem;font-weight:800;color:var(--blue);margin-bottom:12px}
+.step p{color:var(--muted);font-size:.9rem}
+.topic{min-height:190px;display:flex;flex-direction:column;justify-content:space-between}
+.tag{color:#6086ae;text-transform:uppercase;font-size:.69rem;font-weight:800;letter-spacing:.65px}
+.topic h3{font-size:1.2rem;margin-top:10px}
+.topicfoot{display:flex;justify-content:space-between;color:#8194a8;font-size:.76rem}
+.chip{padding:6px 9px;background:#f4f8fd;border:1px solid var(--line);border-radius:999px}
+.mapgrid{display:grid;grid-template-columns:1fr .33fr;gap:24px}
+.mapbox{background:#fff;border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:var(--shadow)}
+.map{height:450px;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#eaf6ff,#dceeff);position:relative}
+.maplabel{position:absolute;left:15px;top:14px;z-index:2;background:rgba(255,255,255,.9);padding:7px 10px;border-radius:999px;border:1px solid var(--line);font-size:.71rem;font-weight:800;color:#65819e}
+.map svg{width:100%;height:100%}
+.land{fill:#c6dced;stroke:#aac8df;stroke-width:1.1}
+.gridline{stroke:rgba(255,255,255,.6);stroke-width:1}
+.ping{fill:none;stroke:#76a9e8;stroke-width:2;animation:ping 2.4s infinite}
+.dot{fill:var(--blue);stroke:#fff;stroke-width:3}
+.flag{font-size:17px;text-anchor:middle}
+.loclist{display:grid;gap:11px}
+.loc{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px}
+.loc strong{display:block;font-size:.9rem}.loc span{color:var(--muted);font-size:.78rem}
+.community{display:grid;grid-template-columns:1fr .85fr;gap:24px}
+.checks{display:grid;gap:12px;margin-top:20px}
+.check{display:flex;gap:10px;color:var(--muted);font-size:.9rem}.check b{color:var(--blue)}
+.quote{background:linear-gradient(135deg,#edf7ff,#e4f2ff);border:1px solid #d5e8f8;border-radius:24px;padding:28px}
+.quote h3{font-size:1.4rem;margin:14px 0 8px}.quote p{color:var(--muted)}
+.faq{max-width:850px;margin:auto}
+details{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:800}
+details p{padding-top:11px;color:var(--muted);font-size:.9rem}
+.join{text-align:center;padding:105px 0;background:linear-gradient(135deg,#4e86d9,#316bc8);color:#fff;position:relative;overflow:hidden}
+.join h2{color:#fff;font-size:clamp(2.6rem,5.5vw,4.7rem);letter-spacing:-2px}
+.join p{max-width:700px;margin:13px auto;color:rgba(255,255,255,.9)}
+.join .btn{margin-top:28px;min-width:230px}
+.join .eyebrow-white{display:inline-block;padding:8px 13px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.7px}
+footer{background:#0d2136;color:#fff;padding:48px 0 22px}
+.foot{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.footlinks{display:flex;gap:17px;flex-wrap:wrap}.footlinks a{color:#c2d0de;font-size:.83rem}
+.bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:28px;padding-top:17px;color:#91a6bb;font-size:.77rem;display:flex;justify-content:space-between;gap:15px}
+.reveal{opacity:0;transform:translateY(16px);transition:.65s}.reveal.show{opacity:1;transform:none}
+@keyframes float{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(.98)}50%{opacity:.95;transform:scale(1.04)}}
+@keyframes ping{0%{r:6;opacity:.6}75%,100%{r:22;opacity:0}}
+@media(max-width:950px){.hero-grid,.community{grid-template-columns:1fr}.grid4,.steps{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr 1fr}.mapgrid{grid-template-columns:1fr}}
+@media(max-width:700px){.container{width:min(100% - 28px,1160px)}.menu{display:block}.links{display:none;position:absolute;left:14px;right:14px;top:72px;flex-direction:column;align-items:stretch;gap:2px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:9px;box-shadow:var(--shadow)}.links.open{display:flex}.links a{padding:10px 12px}.links .join{text-align:center}.hero{padding:78px 0 70px}.hero h1{letter-spacing:-2.5px}.grid4,.grid3,.grid2,.steps{grid-template-columns:1fr}.mini{grid-template-columns:1fr}.map{height:330px}.bottom{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero-card,.glow:before,.ping{animation:none}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="container navin">
+<a class="brand" href="#home"><span class="logo">⚖</span>DebateLabs</a>
+<button class="menu" id="menu" aria-label="Open menu">☰</button>
+<nav class="links" id="links">
+<a href="#home">Home</a><a href="#about">About</a><a href="#topics">Topics</a><a href="#global">Global</a><a href="#community">Community</a><a href="#faq">FAQ</a><a class="join" href="#join">Join DebateLabs</a>
+</nav></div></header>
+
+<main id="home">
+<section class="hero"><div class="container hero-grid">
+<div class="reveal"><span class="pill">🌎 Student-led • Global • Evidence-based</span>
+<h1>Think. <span>Speak.</span> Connect.</h1>
+<p>DebateLabs is a cozy international space for students who like asking questions, researching ideas, speaking clearly and learning through respectful discussion.</p>
+<div class="actions"><a class="btn primary glow" href="#join">✨ Join DebateLabs →</a><a class="btn secondary" href="#topics">Explore topics</a></div>
+<div class="meta"><span>🎤 Speaking confidence</span><span>🧠 Critical thinking</span><span>🔎 Research skills</span><span>🤝 Global connection</span></div></div>
+
+<div class="hero-card reveal"><div class="top"><span>DEBATELABS TOPIC LAB</span><span class="live">● Open discussion</span></div>
+<h3>Should AI be allowed in schools?</h3><p>A sample topic to research, question and discuss from different perspectives.</p>
+<div class="mini"><div><small>Think about</small>Learning & creativity</div><div><small>Consider</small>Academic integrity</div><div><small>Research</small>Evidence & sources</div><div><small>Discuss</small>Different views</div></div>
+<div class="note">💡 Great debate is about understanding an issue deeply — not just trying to “win.”</div></div>
+</div></section>
+
+<section class="section" id="about"><div class="container">
+<div class="head reveal"><span class="pill">ABOUT DEBATELABS</span><h2>More than just arguing.</h2><p>Build useful skills through conversations that make you think, research and communicate.</p></div>
+<div class="grid4">
+<article class="card reveal"><div class="ic">🎤</div><h3>Speak</h3><p>Practice expressing ideas clearly and build confidence while speaking.</p></article>
+<article class="card reveal"><div class="ic">🧠</div><h3>Think</h3><p>Explore questions from different perspectives and strengthen critical thinking.</p></article>
+<article class="card reveal"><div class="ic">🔎</div><h3>Research</h3><p>Find reliable evidence, check sources and support claims responsibly.</p></article>
+<article class="card reveal"><div class="ic">🌎</div><h3>Connect</h3><p>Meet students from different backgrounds through thoughtful discussion.</p></article>
+</div></div></section>
+
+<section class="section soft"><div class="container">
+<div class="head reveal"><span class="pill">HOW IT WORKS</span><h2>Your DebateLabs journey.</h2><p>A simple path from curiosity to participation.</p></div>
+<div class="steps"><div class="step reveal"><div class="num">01</div><h3>Join</h3><p>Fill out the membership application.</p></div><div class="step reveal"><div class="num">02</div><h3>Explore</h3><p>Choose a question that makes you curious.</p></div><div class="step reveal"><div class="num">03</div><h3>Research</h3><p>Find evidence and prepare your ideas.</p></div><div class="step reveal"><div class="num">04</div><h3>Discuss</h3><p>Share, listen, respond and keep learning.</p></div></div>
+</div></section>
+
+<section class="section" id="topics"><div class="container">
+<div class="head reveal"><span class="pill">TOPIC WALL</span><h2>Questions worth discussing.</h2><p>Technology, education, science, society, media, culture, ethics and global issues.</p></div>
+<div class="grid3">
+<article class="card topic reveal"><div><span class="tag">🤖 Technology</span><h3>Should AI be allowed in schools?</h3><p>Learning, creativity, assessment and responsible use.</p></div><div class="topicfoot"><span class="chip">Technology</span>01</div></article>
+<article class="card topic reveal"><div><span class="tag">📱 Society</span><h3>Does social media improve meaningful communication?</h3><p>Connection, attention, information and online communities.</p></div><div class="topicfoot"><span class="chip">Society</span>02</div></article>
+<article class="card topic reveal"><div><span class="tag">🔬 Science</span><h3>Should scientific research be freely accessible?</h3><p>Research access, publishing, funding and innovation.</p></div><div class="topicfoot"><span class="chip">Science</span>03</div></article>
+<article class="card topic reveal"><div><span class="tag">🎓 Education</span><h3>What should the classroom of the future look like?</h3><p>Knowledge, creativity, technology and practical skills.</p></div><div class="topicfoot"><span class="chip">Education</span>04</div></article>
+<article class="card topic reveal"><div><span class="tag">🌐 Media</span><h3>How should we recognize misleading information online?</h3><p>Sources, context, evidence and digital literacy.</p></div><div class="topicfoot"><span class="chip">Media</span>05</div></article>
+<article class="card topic reveal"><div><span class="tag">🕊️ Religion & Society</span><h3>How can religious diversity and coexistence be supported?</h3><p>Belief, culture, rights, dialogue and community life.</p></div><div class="topicfoot"><span class="chip">Society</span>06</div></article>
+</div></div></section>
+
+<section class="section soft" id="global"><div class="container">
+<div class="head reveal"><span class="pill">GLOBAL DEBATELABS</span><h2>Different places. Shared curiosity.</h2><p>A visual of the international spirit DebateLabs is built to welcome.</p></div>
+<div class="mapgrid">
+<div class="mapbox reveal"><div class="map"><span class="maplabel">🌎 Example locations</span>
+<svg viewBox="0 0 1000 500" role="img" aria-label="Stylized world map with example locations">
+<path class="gridline" fill="none" d="M40 80H960M40 160H960M40 240H960M40 320H960M40 400H960M140 30V470M260 30V470M380 30V470M500 30V470M620 30V470M740 30V470M860 30V470"/>
+<path class="land" d="M95 125l55-35 70 15 48 35-18 29-40 3-10 35-30 3-17-29-43-21z"/>
+<path class="land" d="M235 286l37 10 28 43 7 42-23 44-25-24-10-42-22-29z"/>
+<path class="land" d="M420 120l55-30 69 8 47 26 45 2 41 25-25 29-41 9-20 25-38-5-20-23-37 9-44-20-36-19z"/>
+<path class="land" d="M485 254l37-9 31 35 12 36-14 48-25 11-23 45-27-35 4-39-20-32 15-38z"/>
+<path class="land" d="M650 120l72-28 91 15 82 34 56 43-36 27-48 5-37 24-53-5-45-27-39-5-20-30z"/>
+<path class="land" d="M718 292l55-20 67 17 43 28 52 16-33 27-53-8-28 19-58-8-26-27-33-5z"/>
+<path class="land" d="M844 370l38-13 46 18 9 24-39 11-40-11z"/>
+<path class="land" d="M766 425l39-15 40 16 8 22-38 14-39-14z"/>
+<g><circle class="ping" cx="210" cy="180" r="6"/><circle class="dot" cx="210" cy="180" r="6"/><text class="flag" x="210" y="151">🇺🇸</text></g>
+<g><circle class="ping" cx="520" cy="150" r="6"/><circle class="dot" cx="520" cy="150" r="6"/><text class="flag" x="520" y="121">🇬🇧</text></g>
+<g><circle class="ping" cx="570" cy="165" r="6"/><circle class="dot" cx="570" cy="165" r="6"/><text class="flag" x="570" y="136">🇩🇪</text></g>
+<g><circle class="ping" cx="690" cy="198" r="6"/><circle class="dot" cx="690" cy="198" r="6"/><text class="flag" x="690" y="169">🇮🇳</text></g>
+<g><circle class="ping" cx="785" cy="180" r="6"/><circle class="dot" cx="785" cy="180" r="6"/><text class="flag" x="785" y="151">🇯🇵</text></g>
+<g><circle class="ping" cx="818" cy="320" r="6"/><circle class="dot" cx="818" cy="320" r="6"/><text class="flag" x="818" y="291">🇿🇦</text></g>
+<g><circle class="ping" cx="878" cy="430" r="6"/><circle class="dot" cx="878" cy="430" r="6"/><text class="flag" x="878" y="401">🇦🇺</text></g>
+</svg></div></div>
+<div class="loclist">
+<div class="loc reveal"><strong>🇮🇳 India</strong><span>South Asia</span></div>
+<div class="loc reveal"><strong>🇬🇧 United Kingdom</strong><span>Europe</span></div>
+<div class="loc reveal"><strong>🇺🇸 United States</strong><span>North America</span></div>
+<div class="loc reveal"><strong>🇩🇪 Germany</strong><span>Europe</span></div>
+<div class="loc reveal"><strong>🇯🇵 Japan</strong><span>East Asia</span></div>
+<div class="loc reveal"><strong>🇦🇺 Australia</strong><span>Oceania</span></div>
+<div class="loc reveal"><strong>🌎 And beyond</strong><span>More countries can join.</span></div>
+</div></div></div></section>
+
+<section class="section" id="community"><div class="container community">
+<div class="card reveal"><span class="pill">COMMUNITY</span><h2 style="font-size:2.35rem;margin:15px 0 10px">Keep the conversation going.</h2><p>Use the member community for discussion, research, preparation, announcements and staying connected between live debates.</p>
+<div class="checks"><div class="check"><b>✓</b><span>Discuss upcoming and current topics</span></div><div class="check"><b>✓</b><span>Share research and useful sources</span></div><div class="check"><b>✓</b><span>Prepare with other members</span></div><div class="check"><b>✓</b><span>Stay updated with announcements</span></div><div class="check"><b>✓</b><span>Make room for different backgrounds and viewpoints</span></div></div>
+</div>
+<div class="quote reveal"><div class="ic">💬</div><h3>Not everything has to be a formal debate.</h3><p>Sometimes the best discussion starts with a simple question or a surprising source.</p><div class="actions"><a class="btn secondary" href="#join">Join the community →</a></div></div>
+</div></section>
+
+<section class="section" id="faq"><div class="container">
+<div class="head reveal" style="text-align:center;margin-inline:auto"><span class="pill">FAQ</span><h2>Questions, answered.</h2><p>Some basics before you join.</p></div>
+<div class="faq">
+<details class="reveal" open><summary>Do I need previous debate experience?</summary><p>No. Beginners are welcome.</p></details>
+<details class="reveal"><summary>Do I have to attend every debate?</summary><p>No. Participate when your schedule allows.</p></details>
+<details class="reveal"><summary>Is DebateLabs international?</summary><p>The community is designed to welcome students from different countries and use flexible timing for live sessions.</p></details>
+<details class="reveal"><summary>Can I help without being a debater?</summary><p>Yes. Research, fact-checking, moderation and community participation are all useful roles.</p></details>
+<details class="reveal"><summary>Where do I apply?</summary><p>Click the glowing Join DebateLabs button below. It opens the official Google Form.</p></details>
+</div></div></section>
+
+<section class="join" id="join"><div class="container">
+<span class="eyebrow-white">MEMBERSHIP</span><h2>Ready to join DebateLabs?</h2>
+<p>Tell us a little about yourself, your interests and what you would like to explore with the community.</p>
+<a class="btn secondary glow" href="https://docs.google.com/forms/d/e/1FAIpQLSdaZ-12gXhak30y1jAgZ4MddbTWIy96obATgJNB460y5Io5qQ/viewform?usp=dialog">✨ Join DebateLabs →</a>
+</div></section>
+</main>
+
+<footer><div class="container"><div class="foot">
+<div><strong>⚖ DebateLabs</strong><p style="color:#acbdcf;margin-top:5px;font-size:.85rem">Think. Speak. Connect.</p></div>
+<div class="footlinks"><a href="#home">Home</a><a href="#about">About</a><a href="#topics">Topics</a><a href="#global">Global</a><a href="#community">Community</a><a href="#faq">FAQ</a><a href="#join">Join</a></div>
+</div><div class="bottom"><span>© 2026 DebateLabs</span><span>Student-led • Global • Evidence-based</span></div></div></footer>
+
+<script>
+const m=document.getElementById('menu'),n=document.getElementById('links');
+m.addEventListener('click',()=>n.classList.toggle('open'));
+n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
+const els=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');o.unobserve(e.target)}}),{threshold:.08});
+  els.forEach(e=>o.observe(e));
+}else els.forEach(e=>e.classList.add('show'));
+</script>
+</body>
+</html>
